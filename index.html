@@ -2,77 +2,104 @@
 <html lang="az">
 <head>
     <meta charset="UTF-8">
-    <title>EvdəKazan - Satış Kataloqu</title>
+    <title>EvdəKazan - Saat Kataloqu</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            background: linear-gradient(to right, #e0f7fa, #e8f5e9);
             margin: 0;
             padding: 0;
         }
 
         header {
             background: linear-gradient(to right, #3498db, #2ecc71);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             color: white;
-            font-size: 36px;
+            font-size: 40px;
             font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         }
 
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             padding: 30px;
         }
 
         .item {
-            background: #ffffff;
+            background: white;
             border: 2px solid #2ecc71;
-            border-radius: 10px;
-            padding: 10px;
-            width: 200px;
+            border-radius: 12px;
+            padding: 15px;
+            width: 220px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeIn 1s ease-in-out;
         }
 
         .item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: scale(1.07);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .item img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .price {
             margin-top: 10px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
             color: #3498db;
+        }
+
+        .desc {
+            font-style: italic;
+            color: #2e7d32;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <header>🏠 EvdəKazan</header>
+    <header>⌚ EvdəKazan - Saat Kataloqu</header>
     <div class="gallery" id="gallery"></div>
 
     <script>
         const gallery = document.getElementById('gallery');
 
+        const descriptions = {
+            1: "Zərifliyi sevənlər üçün minimal dizayn.",
+            2: "Klassikanı sevənlər üçün sadə şıklıq.",
+            3: "Tərzini tamamlayan cəsarətli görünüş!",
+            4: "Zamansız dizayn – istənilən geyimə uyğun.",
+            5: "Gündəlik üçün ideal, şık və rahat.",
+            6: "Cazibədar və funksional eyni anda.",
+            7: "Hədiyyəlik mükəmməl seçim!",
+            8: "Təkcə saat deyil, bir ifadə!",
+            9: "Yüksək keyfiyyət, sərfəli qiymət.",
+            10: "Trendə uyğun dizayn – sadəcə sənlik!",
+            11: "İş stilinə yaraşacaq müasir görüntü."
+        };
+
         for (let i = 1; i <= 11; i++) {
-            let price = (i === 1 || i === 2) ? 15 : 22;
+            let price = (i === 1 || i === 2) ? 15 : 25;
             let item = document.createElement('div');
             item.className = 'item';
             item.innerHTML = `
-                <img src="${i}.jpg" alt="Şəkil ${i}">
+                <img src="${i}.jpg" alt="Saat ${i}">
                 <div class="price">${price} AZN</div>
+                <div class="desc">${descriptions[i]}</div>
             `;
             gallery.appendChild(item);
         }
